@@ -1,2 +1,2 @@
-db_username = "ritik"    #give username
-db_password = "RRpati23"    # give password
+db_username = ""    #give username
+db_password = ""    # give password
