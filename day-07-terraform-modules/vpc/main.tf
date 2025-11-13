@@ -39,7 +39,7 @@ resource "aws_subnet" "public2" {
   
 }
 
-#-------------Private-subnet---------------#
+#-------------Private-subnet-frontend---------------#
 
 resource "aws_subnet" "private1" {
     vpc_id = aws_vpc.name.id
@@ -57,6 +57,51 @@ resource "aws_subnet" "private2" {
     availability_zone = var.az2
     tags = {
       Name= var.private_subnet2_name
+    }
+  
+}
+
+
+#-------------Private-subnet-backend--------------#
+
+resource "aws_subnet" "private3" {
+    vpc_id = aws_vpc.name.id
+    cidr_block = var.private_subnet3_cidr
+    availability_zone = var.az1
+    tags = {
+      Name= var.private_subnet3_name
+    }
+  
+}
+
+resource "aws_subnet" "private4" {
+    vpc_id = aws_vpc.name.id
+    cidr_block = var.private_subnet4_cidr
+    availability_zone = var.az2
+    tags = {
+      Name= var.private_subnet4_name
+    }
+  
+}
+
+#-------------Private-subnet-rds--------------#
+
+resource "aws_subnet" "private5" {
+    vpc_id = aws_vpc.name.id
+    cidr_block = var.private_subnet5_cidr
+    availability_zone = var.az1
+    tags = {
+      Name= var.private_subnet5_name
+    }
+  
+}
+
+resource "aws_subnet" "private6" {
+    vpc_id = aws_vpc.name.id
+    cidr_block = var.private_subnet6_cidr
+    availability_zone = var.az2
+    tags = {
+      Name= var.private_subnet6_name
     }
   
 }
@@ -104,6 +149,8 @@ resource "aws_eip" "name" {
 resource "aws_nat_gateway" "name" {
     subnet_id = aws_subnet.public1.id
     allocation_id = aws_eip.name.id
+    #allocation_id = aws_eip.name.allocation_id
+
     tags = {
       Name=var.NAT_name
     }
@@ -134,6 +181,28 @@ resource "aws_route_table_association" "private1" {
 
 resource "aws_route_table_association" "private2" {
     subnet_id = aws_subnet.private2.id
+    route_table_id = aws_route_table.name2.id
+  
+}
+resource "aws_route_table_association" "private3" {
+    subnet_id = aws_subnet.private3.id
+    route_table_id = aws_route_table.name2.id
+  
+}
+
+resource "aws_route_table_association" "private4" {
+    subnet_id = aws_subnet.private4.id
+    route_table_id = aws_route_table.name2.id
+  
+}
+resource "aws_route_table_association" "private5" {
+    subnet_id = aws_subnet.private5.id
+    route_table_id = aws_route_table.name2.id
+  
+}
+
+resource "aws_route_table_association" "private6" {
+    subnet_id = aws_subnet.private6.id
     route_table_id = aws_route_table.name2.id
   
 }

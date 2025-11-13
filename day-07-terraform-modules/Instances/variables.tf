@@ -16,7 +16,12 @@ variable "public_subnet_id" {
     type = string
   
 }
-variable "private_subnet_id" {
+variable "private_subnet1_id" {
+    default = ""
+    type = string
+  
+}
+variable "private_subnet2_id" {
     default = ""
     type = string
   
@@ -26,7 +31,12 @@ variable "public_instance_name" {
     type = string
   
 }
-variable "private_instance_name" {
+variable "pvt_fronend_name" {
+    default = ""
+    type = string
+  
+}
+variable "pvt_backend_name" {
     default = ""
     type = string
   
@@ -41,5 +51,10 @@ variable "security_group_id" {
 variable "associate_public_ip" {
   description = "Whether to assign a public IP"
   type        = bool
-  default     = false
+  default     = true
+}
+
+variable "key_name" {
+  description = "Key pair name to use for EC2 instances"
+  type        = string
 }

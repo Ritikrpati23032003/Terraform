@@ -42,7 +42,7 @@ variable "public_subnet2_name" {
   
 }
 
-#--------------Private-subent------------#
+#--------------Private-subent-(frontend)-----------#
 
 variable "private_subnet1_cidr" {
     default = ""
@@ -65,6 +65,57 @@ variable "private_subnet2_name" {
     default = ""
   
 }
+
+
+#--------------Private-subent (backend) -----------#
+
+variable "private_subnet3_cidr" {
+    default = ""
+    type = string
+  
+}
+
+variable "private_subnet3_name" {
+    default = ""
+  
+}
+
+variable "private_subnet4_cidr" {
+    default = ""
+    type = string
+  
+}
+
+variable "private_subnet4_name" {
+    default = ""
+  
+}
+
+#--------------Private-subent-(rds)-----------#
+
+variable "private_subnet5_cidr" {
+    default = ""
+    type = string
+  
+}
+
+variable "private_subnet5_name" {
+    default = ""
+  
+}
+
+variable "private_subnet6_cidr" {
+    default = ""
+    type = string
+  
+}
+
+variable "private_subnet6_name" {
+    default = ""
+  
+}
+
+
 
 #--------------Aviabilality-Zone-------------#
 

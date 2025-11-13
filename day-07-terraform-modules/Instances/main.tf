@@ -14,14 +14,32 @@ resource "aws_instance" "public" {
 }
 
 #================Private-instance===============#
-resource "aws_instance" "private" {
+#----------------frontend-------------------#
+
+resource "aws_instance" "frontend" {
     ami = var.ami_id
     instance_type =var.instance_type
-    subnet_id = var.private_subnet_id
+    subnet_id = var.private_subnet1_id
+     key_name               = var.key_name
     tags = {
-      Name=var.private_instance_name
+      Name=var.pvt_fronend_name
     }
     vpc_security_group_ids = [var.security_group_id]
 
   
 }
+#----------------backend------------------#
+
+resource "aws_instance" "backend" {
+    ami = var.ami_id
+    instance_type =var.instance_type
+    subnet_id = var.private_subnet2_id
+     key_name               = var.key_name
+    tags = {
+      Name=var.pvt_backend_name
+    }
+    vpc_security_group_ids = [var.security_group_id]
+
+  
+}
+
