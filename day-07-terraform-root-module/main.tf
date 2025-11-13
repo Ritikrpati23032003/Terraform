@@ -8,17 +8,29 @@ module "vpc" {
 
   ig_name              = "Dev-IG"
 
-  public_subnet1_cidr  = "10.0.1.0/24"
+  public_subnet1_cidr  = "10.0.0.0/24"
   public_subnet1_name  = "Public-Subnet-1"
 
-  public_subnet2_cidr  = "10.0.2.0/24"
+  public_subnet2_cidr  = "10.0.1.0/24"
   public_subnet2_name  = "Public-Subnet-2"
 
-  private_subnet1_cidr = "10.0.3.0/24"
-  private_subnet1_name = "Private-Subnet-1"
+  private_subnet1_cidr = "10.0.2.0/24"
+  private_subnet1_name = "frontend-Subnet-1"
 
-  private_subnet2_cidr = "10.0.4.0/24"
-  private_subnet2_name = "Private-Subnet-2"
+  private_subnet2_cidr = "10.0.3.0/24"
+  private_subnet2_name = "frontend-Subnet-2"
+
+  private_subnet3_cidr = "10.0.4.0/24"
+  private_subnet3_name = "backend-Subnet-3"
+
+  private_subnet4_cidr = "10.0.5.0/24"
+  private_subnet4_name = "backend-Subnet-4"
+
+  private_subnet5_cidr = "10.0.6.0/24"
+  private_subnet5_name = "rds-Subnet-5"
+
+  private_subnet6_cidr = "10.0.7.0/24"
+  private_subnet6_name = "rds-Subnet-6"
 
   az1                  = "us-east-1a"
   az2                  = "us-east-1b"
@@ -75,9 +87,10 @@ module "instances" {
   ami_id                = var.ami_id
   instance_type         = var.instance_type
   public_subnet_id      = module.vpc.public_subnet1_id
-  private_subnet_id     = module.vpc.private_subnet1_id
+  private_subnet1_id     = module.vpc.private_subnet1_id
+  private_subnet2_id     = module.vpc.private_subnet3_id
   security_group_id     = module.vpc.security_group_id
-  associate_public_ip   = true
   public_instance_name  = "public-instance"
-  private_instance_name = "private-instance"
+  pvt_fronend_name      = "frontend-instance"
+  pvt_backend_name      = "backend-instance"
 }
