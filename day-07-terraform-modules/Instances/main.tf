@@ -20,7 +20,7 @@ resource "aws_instance" "frontend" {
     ami = var.ami_id
     instance_type =var.instance_type
     subnet_id = var.private_subnet1_id
-     key_name               = var.key_name
+     #key_name               = var.key_name
     tags = {
       Name=var.pvt_fronend_name
     }
@@ -34,7 +34,7 @@ resource "aws_instance" "backend" {
     ami = var.ami_id
     instance_type =var.instance_type
     subnet_id = var.private_subnet2_id
-     key_name               = var.key_name
+     #key_name               = var.key_name
     tags = {
       Name=var.pvt_backend_name
     }

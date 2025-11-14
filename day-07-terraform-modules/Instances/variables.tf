@@ -54,7 +54,7 @@ variable "associate_public_ip" {
   default     = true
 }
 
-variable "key_name" {
-  description = "Key pair name to use for EC2 instances"
-  type        = string
-}
+# variable "key_name" {
+#   description = "Key pair name to use for EC2 instances"
+#   type        = string
+# }
